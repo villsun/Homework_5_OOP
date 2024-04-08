@@ -42,6 +42,27 @@ public:
 		this->p_str = (char*)realloc(this->p_str, strlen(p_str) * sizeof(char) + 1);
 		strcpy(this->p_str, p_str);
 	}
+
+	char& operator [](int index)
+	{
+		return p_str[index];
+	}
+
+	int operator ()(char value)
+	{
+		int index = -1;
+		for (int i = 0; i < strlen(p_str); i++)
+		{
+			if (value == p_str[i])
+			{
+				index = i;
+				break;
+			}
+		}
+
+		return index;
+	}
+
 	~String()
 	{
 		free(p_str);
@@ -57,12 +78,16 @@ int main()
 {
 	String str(10);
 	str.Show_Str();
-	str.Enter_Str();
+	/*str.Enter_Str();
 	str.Show_Str();
-	Func(str);
+	Func(str);*/
 
-	String temp = str;
-	temp.Show_Str();
+	/*String temp = str;
+	temp.Show_Str();*/
+
+	/*cout << str[0] << endl;*/
+
+	/*cout << str('N') << endl;*/
 
 	return 0;
 }
